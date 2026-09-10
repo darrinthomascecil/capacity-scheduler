@@ -1,0 +1,10 @@
+# The schedule, in plain English. Lines starting with # are ignored.
+#
+# Name the instance, the unit count, the time to scale up, and the time to
+# scale back down. All four are required -- a schedule with no scale-down means
+# paying for peak capacity overnight, and the app will ask rather than guess.
+#
+# The window must be long enough for a scale to complete each way: about 10
+# minutes on the v2 tiers, 90 on the classic ones.
+
+Scale my-apim to 4 units at 9am Central and back down at 6pm on weekdays.

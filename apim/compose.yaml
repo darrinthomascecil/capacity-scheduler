@@ -1,0 +1,17 @@
+services:
+  worker:
+    build: .
+    image: apimprofile:local
+    env_file: .env
+    environment:
+      AZURE_CONFIG_DIR: /home/apimprofile/.azure
+    volumes:
+      # Local dev only. AzureCliCredential shells out to `az`, which needs a
+      # WRITABLE config dir -- a :ro mount fails when it refreshes its session.
+      # Use a copy:  rm -rf /tmp/azcfg && cp -R ~/.azure /tmp/azcfg && chmod -R a+rwX /tmp/azcfg
+      # In production a managed identity needs none of this.
+      - /tmp/azcfg:/home/apimprofile/.azure
+      - ./targets.json:/etc/apimprofile/targets.json:ro
+    restart: unless-stopped
+    # An APIM scale can be in flight for 45 minutes; give the tick room to finish.
+    stop_grace_period: 60s

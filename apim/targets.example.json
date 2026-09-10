@@ -1,0 +1,7 @@
+{
+  "_comment": "Absolute per-instance unit limits. Key: <resourceGroup>/<serviceName>. The tier maximum is enforced on top of these. `apimprofile bounds <service>` seeds an entry from current state.",
+  "rg-apim/my-apim": {
+    "absoluteMin": 1,
+    "absoluteMax": 4
+  }
+}

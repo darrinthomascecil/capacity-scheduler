@@ -1,0 +1,7 @@
+{
+  "_comment": "Absolute per-pool limits. Every computed value is clamped into these before any scaling call, so a misread sentence can only ever produce a valid node count. Key format: <resourceGroup>/<cluster>/<nodePool>. Set these deliberately -- `aksprofile bounds <cluster> <pool>` seeds an entry from current state.",
+  "driftscope-cloud/driftscope-aks/system": {
+    "absoluteMin": 1,
+    "absoluteMax": 2
+  }
+}

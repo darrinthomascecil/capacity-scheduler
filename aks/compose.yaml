@@ -1,0 +1,19 @@
+services:
+  worker:
+    build: .
+    image: aksprofile:local
+    env_file: .env
+    environment:
+      AZURE_CONFIG_DIR: /home/aksprofile/.azure
+    volumes:
+      # Local development only. DefaultAzureCredential falls back to
+      # AzureCliCredential, which shells out to `az` and needs a WRITABLE config
+      # directory -- a read-only mount fails when it refreshes its session.
+      # Use a copy so the container never mutates your real credentials:
+      #     rm -rf /tmp/azcfg && cp -R ~/.azure /tmp/azcfg && chmod -R a+rwX /tmp/azcfg
+      # In production none of this exists: a managed identity needs no mount.
+      - /tmp/azcfg:/home/aksprofile/.azure
+      # The guardrails. Read-only on purpose -- the app must never write them.
+      - ./targets.json:/etc/aksprofile/targets.json:ro
+    restart: unless-stopped
+    stop_grace_period: 45s      # room for an in-flight scale to finish

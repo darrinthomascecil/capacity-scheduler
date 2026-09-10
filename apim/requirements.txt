@@ -1,0 +1,3 @@
+# Required for the Azure Table Storage backend, the only durable one.
+azure-data-tables>=12.5.0
+azure-identity>=1.17.0

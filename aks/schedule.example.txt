@@ -1,0 +1,8 @@
+# The schedule, in plain English. Lines starting with # are ignored.
+#
+# Say both the scale-up and the scale-down -- a schedule with no scale-down is
+# incomplete and the app will ask rather than guess.
+# Use "minimum four" for an autoscaler floor, "four nodes" for an exact count.
+
+Scale to 4 nodes every weekday from 6am until 8pm Pacific time,
+and 1 node the rest of the time.

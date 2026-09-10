@@ -1,0 +1,5 @@
+# Required for the Azure Table Storage backend, which is the only durable one.
+# The CLI, worker and test suite run on the standard library alone when using
+# the in-memory backend (tests) -- but nothing may be DEPLOYED without these.
+azure-data-tables>=12.5.0
+azure-identity>=1.17.0
