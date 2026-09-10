@@ -1,0 +1,7 @@
+# Scale the test APIM up briefly this afternoon, then back down.
+#
+# Window must be at least 90 minutes -- an APIM scale takes 15-45 minutes each
+# way, so anything shorter cannot complete (DESIGN.md 3.1).
+
+Scale apim-sched-b491bf98 to 2 units at 4:20pm Pacific
+and back down at 6pm.

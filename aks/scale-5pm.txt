@@ -1,0 +1,5 @@
+# Scale the system node pool up briefly at 5pm Eastern, then back down.
+# Days are unstated, so this applies every day.
+
+Scale the system node pool on the driftscope cluster to 2 nodes at 6:12 pm pacific,
+then scale it back down to 1 node at 6:25pm.
